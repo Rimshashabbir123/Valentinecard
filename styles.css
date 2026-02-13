@@ -1,0 +1,783 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-red: #E63946;
+    --deep-red: #C1121F;
+    --light-red: #F77F8A;
+    --rose: #FFB3BA;
+    --white: #FFFFFF;
+    --cream: #FFF5F7;
+    --soft-pink: #FFE5E8;
+    --shadow: rgba(230, 57, 70, 0.2);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, var(--cream) 0%, var(--soft-pink) 50%, var(--rose) 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* ========== Floating Hearts Background ========== */
+.hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.floating-heart {
+    position: absolute;
+    color: var(--primary-red);
+    opacity: 0.15;
+    animation: floatUp 15s linear infinite;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(100vh) rotate(0deg) scale(0.5);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.15;
+    }
+    90% {
+        opacity: 0.15;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg) scale(1);
+        opacity: 0;
+    }
+}
+
+/* ========== Main Container ========== */
+.main-container {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* ========== Start Screen ========== */
+.start-screen {
+    text-align: center;
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.logo-container {
+    margin-bottom: 30px;
+    animation: heartBeat 2s ease-in-out infinite;
+}
+
+@keyframes heartBeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    10% {
+        transform: scale(1.1);
+    }
+    20% {
+        transform: scale(1);
+    }
+    30% {
+        transform: scale(1.1);
+    }
+    40% {
+        transform: scale(1);
+    }
+}
+
+.heart-logo {
+    width: 120px;
+    height: 120px;
+    color: var(--primary-red);
+    filter: drop-shadow(0 10px 30px var(--shadow));
+}
+
+.main-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 4.5rem;
+    color: var(--deep-red);
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--primary-red);
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+
+.start-btn {
+    background: linear-gradient(135deg, var(--primary-red), var(--deep-red));
+    color: var(--white);
+    border: none;
+    padding: 18px 45px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px var(--shadow);
+}
+
+.start-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px var(--shadow);
+}
+
+.btn-icon {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+}
+
+.start-btn:hover .btn-icon {
+    transform: translateX(5px);
+}
+
+/* ========== Card Creator ========== */
+.card-creator {
+    width: 100%;
+    max-width: 1400px;
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.creator-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--deep-red);
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.creator-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    background: white;
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
+
+/* ========== Form Panel ========== */
+.form-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: var(--deep-red);
+    font-size: 1rem;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 15px 20px;
+    border: 2px solid var(--rose);
+    border-radius: 15px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: var(--cream);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-red);
+    background: white;
+    box-shadow: 0 0 0 4px rgba(230, 57, 70, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* ========== Upload Area ========== */
+.upload-area {
+    border: 3px dashed var(--rose);
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: var(--cream);
+}
+
+.upload-area:hover {
+    border-color: var(--primary-red);
+    background: white;
+}
+
+.upload-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.upload-icon {
+    width: 50px;
+    height: 50px;
+    color: var(--primary-red);
+}
+
+.upload-content p {
+    font-weight: 500;
+    color: var(--deep-red);
+}
+
+.upload-hint {
+    font-size: 0.85rem;
+    color: #999;
+}
+
+.preview-container {
+    position: relative;
+    margin-top: 15px;
+}
+
+.preview-container img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.remove-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 35px;
+    height: 35px;
+    background: var(--primary-red);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.remove-btn:hover {
+    background: var(--deep-red);
+    transform: scale(1.1);
+}
+
+.preview-btn {
+    background: linear-gradient(135deg, var(--primary-red), var(--deep-red));
+    color: white;
+    border: none;
+    padding: 16px 35px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.preview-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px var(--shadow);
+}
+
+.preview-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* ========== Card Preview ========== */
+.preview-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-preview {
+    perspective: 1000px;
+}
+
+.card-front {
+    background: linear-gradient(135deg, var(--white), var(--cream));
+    border: 3px solid var(--primary-red);
+    border-radius: 25px;
+    padding: 35px;
+    width: 450px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.card-front:hover {
+    transform: rotateY(5deg) translateY(-5px);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.heart-decoration {
+    margin-bottom: 15px;
+}
+
+.heart-decoration svg {
+    width: 50px;
+    height: 50px;
+    color: var(--primary-red);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+.card-to {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5rem;
+    color: var(--deep-red);
+    margin: 0;
+}
+
+.card-photo {
+    margin: 20px 0;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.photo-placeholder {
+    background: var(--soft-pink);
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-red);
+}
+
+.photo-placeholder svg {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+.photo-placeholder p {
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+.card-photo img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-message {
+    margin: 25px 0;
+    text-align: center;
+}
+
+.card-message p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--deep-red);
+    line-height: 1.7;
+    font-style: italic;
+}
+
+.card-footer {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 2px solid var(--rose);
+}
+
+.card-from {
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.8rem;
+    color: var(--primary-red);
+    margin-bottom: 10px;
+}
+
+.hearts-row {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.mini-heart {
+    color: var(--primary-red);
+    font-size: 1.5rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+.mini-heart:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.mini-heart:nth-child(3) {
+    animation-delay: 1s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* ========== Final Card with Envelope ========== */
+.final-card {
+    width: 100%;
+    max-width: 900px;
+    animation: fadeIn 1s ease-in;
+}
+
+.final-wrapper {
+    text-align: center;
+}
+
+.envelope-container {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.envelope {
+    position: relative;
+    width: 600px;
+    height: 400px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.envelope-body {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 300px;
+    background: var(--white);
+    border: 4px solid var(--primary-red);
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.envelope-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, var(--primary-red), var(--deep-red));
+    clip-path: polygon(0 0, 50% 60%, 100% 0);
+    border-radius: 20px 20px 0 0;
+    transition: all 0.8s ease;
+    transform-origin: top center;
+    z-index: 10;
+    box-shadow: 0 10px 30px var(--shadow);
+}
+
+.envelope.open .envelope-flap {
+    transform: rotateX(180deg);
+}
+
+.card-reveal {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    opacity: 0;
+    transition: all 0.8s ease 0.3s;
+}
+
+.envelope.open .card-reveal {
+    bottom: 50px;
+    opacity: 1;
+    animation: slideUp 1s ease-out 0.5s;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateX(-50%) translateY(50px);
+    }
+    to {
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+.final-card-content {
+    background: linear-gradient(135deg, var(--white), var(--cream));
+    border: 3px solid var(--primary-red);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.final-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.final-heart-decoration svg {
+    width: 60px;
+    height: 60px;
+    color: var(--primary-red);
+    margin-bottom: 15px;
+}
+
+.final-to {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3rem;
+    color: var(--deep-red);
+    margin: 0;
+}
+
+.final-photo {
+    margin: 25px 0;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.final-photo img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+}
+
+.final-message {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.final-message p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--deep-red);
+    line-height: 1.8;
+    font-style: italic;
+}
+
+.final-footer {
+    text-align: center;
+    padding-top: 25px;
+    border-top: 2px solid var(--rose);
+}
+
+.final-from {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.2rem;
+    color: var(--primary-red);
+    margin-bottom: 15px;
+}
+
+.final-hearts {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    font-size: 2rem;
+}
+
+.final-hearts span {
+    color: var(--primary-red);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.final-hearts span:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.final-hearts span:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+/* ========== Action Buttons ========== */
+.action-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.action-btn {
+    padding: 15px 35px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.action-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.action-btn.primary {
+    background: linear-gradient(135deg, var(--primary-red), var(--deep-red));
+    color: white;
+}
+
+.action-btn.secondary {
+    background: white;
+    color: var(--primary-red);
+    border: 2px solid var(--primary-red);
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px var(--shadow);
+}
+
+/* ========== Utility Classes ========== */
+.hidden {
+    display: none !important;
+}
+
+/* ========== Responsive Design ========== */
+@media (max-width: 1024px) {
+    .creator-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .card-front {
+        width: 100%;
+        max-width: 450px;
+        margin: 0 auto;
+    }
+
+    .envelope {
+        width: 100%;
+        max-width: 500px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 3rem;
+    }
+
+    .creator-title {
+        font-size: 2rem;
+    }
+
+    .creator-grid {
+        padding: 25px;
+    }
+
+    .card-to,
+    .final-to {
+        font-size: 2rem;
+    }
+
+    .envelope {
+        height: 350px;
+    }
+
+    .envelope-body {
+        height: 250px;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .action-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 2.5rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .heart-logo {
+        width: 80px;
+        height: 80px;
+    }
+
+    .creator-grid {
+        padding: 20px;
+    }
+
+    .card-front {
+        padding: 25px;
+    }
+
+    .final-card-content {
+        padding: 25px;
+    }
+}
